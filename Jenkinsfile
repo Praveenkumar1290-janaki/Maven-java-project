@@ -4,6 +4,6 @@ node('slave1') {
     }
     
     stage('Maven Build') {
-        sh 'mvn clean package'
+        bat 'mvn clean package'
     }
 }
