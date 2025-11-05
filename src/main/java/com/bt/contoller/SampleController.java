@@ -20,8 +20,8 @@ public class SampleController {
             throws JSONException {
 System.out.println(":::MEthod calling:::");
         JSONObject js = new JSONObject();
-        js.put("Name", "pravee");
-        js.put("roger tech","Devops");
+        js.put("Name", "praveenkumar");
+        js.put("Riya Tech","Devops Class");
 
         return js.toString();
 
