@@ -129,7 +129,9 @@
       </plugin>     
     </plugins>
   </build>
-
+<properties>
+  <sonar.organization>hello-123</sonar.organization>
+</properties>
   <profiles>
      <profile>
             <id>sonar</id>
