@@ -25,7 +25,7 @@
 
      	
   </properties>
-<!--<distributionManagement>
+<distributionManagement>
      <snapshotRepository>
         <id>nexus-snapshots</id>
         <url>http://localhost:8081/repository/mvn-snapshot/</url>
@@ -34,7 +34,7 @@
         <id>nexus-releases</id>
         <url>http://localhost:8081/repository/mvn-releases/</url>
     </repository>
-</distributionManagement> -->
+</distributionManagement> 
 
   <dependencies>
     <dependency>
