@@ -14,7 +14,22 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: build the java code
-        run: mvn clean package
+  approval:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production   # 👈 This triggers manual approval
 
-      
+    steps:
+      - name: Approval step
+        run: echo "Approved to proceed"
+
+  build-maven:
+    needs: approval
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code again
+        uses: actions/checkout@v4
+
+      - name: Build the Java code
+        run: mvn clean package
