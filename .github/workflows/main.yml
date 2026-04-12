@@ -1,34 +1,25 @@
-name: Maven CI Pipeline
+name: Maven CI Pipeline with Approval
 
 on:
   push:
     branches: [ "main", "develop" ]
-  pull_request:
-    branches: [ "main", "develop" ]
+  workflow_dispatch:   # 👈 Manual trigger (acts as approval)
 
 jobs:
-  build:
+  checkout:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-  approval:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: production   # 👈 This triggers manual approval
-
-    steps:
-      - name: Approval step
-        run: echo "Approved to proceed"
-
-  build-maven:
-    needs: approval
+  approval-and-build:
+    if: github.event_name == 'workflow_dispatch'   # 👈 runs only when manually triggered
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code again
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Build the Java code
