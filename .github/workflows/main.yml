@@ -15,6 +15,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: build the java code
-        uses: mvn clean package
+        run: mvn clean package
 
       
