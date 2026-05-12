@@ -1,4 +1,4 @@
-node('slave1') {
+node {
     stage('Source Code Checkout(Clone)') {
         git branch: 'main', url: 'https://github.com/Praveenkumar1290-janaki/Maven-java-project.git'
     }
@@ -7,7 +7,7 @@ node('slave1') {
         bat 'mvn clean package'
     }
         stage('sonarqube') {
-   bat 'mvn sonar:sonar -Dsonar.projectKey=test -Dsonar.host.url=http://localhost:9000 -Dsonar.login=697b99198fcb96feeda9af4adf1ed16e0fc632c0'
+   bat 'mvn sonar:sonar -Dsonar.projectKey=bankpo -Dsonar.host.url=http://localhost:9000 -Dsonar.login=ee3ec93364cba01013e493970915ae679afd1574'
     }
     
 }
