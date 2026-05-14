@@ -1,26 +1,24 @@
-name: Maven CI Pipeline with Approval
+name: Maven CI Pipeline
 
 on:
   push:
-    branches: [ "main", "develop" ]
-  workflow_dispatch:   # 👈 Manual trigger (acts as approval)
+    branches:
+      - main
+      - develop
 
 jobs:
-  checkout:
-    if: github.event_name == 'push'
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-  approval-and-build:
-    if: github.event_name == 'workflow_dispatch'   # 👈 runs only when manually triggered
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Build the Java code
-        uses: : mvn clean package
+        run: mvn clean package
